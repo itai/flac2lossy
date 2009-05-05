@@ -2,7 +2,7 @@
 #
 # File:     parallel_flac_to_mp3.zsh
 # Author:   Itai Fiat <itai.fiat@gmail.com>
-# Revision: 2009-05-04
+# Revision: 2009-05-05
 #
 # Converts FLAC files in a directory to MP3 in a parallel directory structure.
 #

@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # File:         single_flac_to_mp3.pl
 # Author:       Itai Fiat <itai.fiat@gmail.com>
-# Revision:     2009-05-04
+# Revision:     2009-05-05
 #
 # Converts a single FLAC file to MP3, preserving tags. Appears to support
 # Unicode.
