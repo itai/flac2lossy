@@ -6,10 +6,7 @@
 #
 # Converts FLAC files in a directory to MP3 in a parallel directory structure.
 #
-# TODO: Remove from DST_DIR files and directories that have been removed from
-#       SRC_DIR.
-#       
-#       Think about getting canonical path without using readlink.
+# TODO: Think about getting canonical path without using readlink.
 
 #{{{ Command line arguments
 if [[ $# -ne 2 ]];
