@@ -9,12 +9,16 @@
 # TODO: Remove from DST_DIR files and directories that have been removed from
 #       SRC_DIR.
 #       
-#       Think about getting cannonical path without using readlink.
+#       Think about getting canonical path without using readlink.
 
 #{{{ Command line arguments
 if [[ $# -ne 2 ]];
 then
     echo "Usage: $0 <FLAC directory> <MP3 directory>"
+    echo ""
+    echo "Converts and copies FLAC file hierarchy to MP3 directory."
+    echo ""
+    echo "Warning! This script deletes all MP3s in target directory which do not have a FLAC equivalent (this will be controlled by a switch eventually)."
     exit -1
 fi
 SRC_DIR=`readlink -f $1`
@@ -46,6 +50,7 @@ cd $DST_DIR
 #}}}
 
 #{{{ Convert files
+cd $DST_DIR
 for f ($FILES)
 do
     SOURCE_FILE=$SRC_DIR/$f
@@ -55,6 +60,12 @@ do
         single_flac_to_mp3.pl $SOURCE_FILE $TARGET_FILE.tmp &&
         mv $TARGET_FILE.tmp $TARGET_FILE
 done
+#}}}
+
+#{{{ Delete MP3s without a FLAC equivalent
+no_flac() { [[ ! -e $SRC_DIR/$REPLY:r.flac ]] }
+cd $DST_DIR
+rm -f **/*(e:no_flac:)
 #}}}
 
 # vim:foldmethod=marker:
